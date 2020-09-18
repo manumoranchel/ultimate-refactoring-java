@@ -3,7 +3,7 @@ package signatureChange;
 public class Id {
     static int ADMIN_ID = 12345;
     static int USER_ID = 11111;
-    public int id;
+    private int id;
 
     public Id(int id) {
         this.id = id;
