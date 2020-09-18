@@ -16,7 +16,7 @@ class Log {
 }
 
 public class Entity {
-    private static final Set<Character> ILLEGAL_ENTITY_NAME_CHARS = new HashSet<Character>(Arrays.asList('*', '?'));
+    private static final Set<Character> ILLEGAL_ENTITY_NAME_CHARS = new HashSet<>(Arrays.asList('*', '?'));
     private String name;
     public Log log = new Log();
 
@@ -30,7 +30,7 @@ public class Entity {
         final StringBuilder newName = new StringBuilder();
         boolean nameChanged = false;
         for (char c : chars) {
-            boolean hasIllegalChar = isHasIllegalChar(c);
+            boolean hasIllegalChar = hasIllegalChar(c);
             if (hasIllegalChar) {
                 nameChanged = true;
                 continue;
@@ -55,15 +55,8 @@ public class Entity {
         return newName.toString();
     }
 
-    private boolean isHasIllegalChar(char c) {
-        boolean hasIllegalChar = false;
-        for (char illegalChar : ILLEGAL_ENTITY_NAME_CHARS) {
-            if (c == illegalChar) {
-                hasIllegalChar = true;
-                break;
-            }
-        }
-        return hasIllegalChar;
+    private boolean hasIllegalChar(char c) {
+        return ILLEGAL_ENTITY_NAME_CHARS.contains(c);
     }
 
 
