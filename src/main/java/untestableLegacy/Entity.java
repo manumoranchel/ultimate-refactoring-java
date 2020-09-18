@@ -9,12 +9,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-class Log {
-    public void warn(String msg) {
-        System.out.println(msg);
-    }
-}
-
 public class Entity {
     private static final Set<Character> ILLEGAL_ENTITY_NAME_CHARS = new HashSet<>(Arrays.asList('*', '?'));
     private String name;

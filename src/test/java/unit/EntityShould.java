@@ -2,8 +2,7 @@ package unit;
 
 import org.junit.Assert;
 import org.junit.Test;
-import signatureChange.AuthenticationService;
-import signatureChange.Id;
+import untestableLegacy.Log;
 import untestableLegacy.Entity;
 
 public class EntityShould {
@@ -36,6 +35,19 @@ public class EntityShould {
         Assert.assertEquals("Isaac", entity.removeIllegalChars(illegalName2));
         Assert.assertEquals("Manu", entity.removeIllegalChars(illegalName3));
         Assert.assertEquals("", entity.removeIllegalChars(illegalName4));
+    }
+
+    @Test
+    public void warn_hql_problematic_characters() throws Exception {
+        String illegalName = "Mireia.";
+        String illegalName2 = "Isaac$";
+        String illegalName3 = "Manu^5";
+
+        Entity entity = new Entity();
+        Log log = new Log();
+        Assert.assertEquals("Mireia", entity.removeIllegalChars(illegalName));
+        Assert.assertEquals("Isaac", entity.removeIllegalChars(illegalName2));
+        Assert.assertEquals("Manu", entity.removeIllegalChars(illegalName3));
     }
 
 }
