@@ -7,4 +7,8 @@ public class User {
     public User(int id) {
         this.id = id;
     }
+
+    public boolean isAdmin() {
+        return ADMIN_ID == this.id;
+    }
 }
