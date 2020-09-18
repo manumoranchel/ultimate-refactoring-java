@@ -4,15 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    private List<Integer> prices = new ArrayList<>();
-
+    private List<Price> prices = new ArrayList<>();
 
     public void add(int price) {
+        add(new Price(price));
+    }
+
+    public void add(Price price) {
         this.prices.add(price);
     }
 
     public int calculateTotalPrice(){
-        return prices.stream().mapToInt(price -> price).sum();
+        return prices.stream().mapToInt(price -> price.getPrice()).sum();
     }
 
     public boolean hasDiscount() {
