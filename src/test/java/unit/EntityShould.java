@@ -2,8 +2,12 @@ package unit;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
+import org.mockito.internal.matchers.Any;
 import untestableLegacy.Log;
 import untestableLegacy.Entity;
+
+import static org.mockito.Matchers.any;
 
 public class EntityShould {
 
@@ -44,10 +48,18 @@ public class EntityShould {
         String illegalName3 = "Manu^5";
 
         Entity entity = new Entity();
-        Log log = new Log();
-        Assert.assertEquals("Mireia", entity.removeIllegalChars(illegalName));
-        Assert.assertEquals("Isaac", entity.removeIllegalChars(illegalName2));
-        Assert.assertEquals("Manu", entity.removeIllegalChars(illegalName3));
+        Log spyLog = Mockito.spy(new Log());
+        entity.log = spyLog;
+
+        entity.removeIllegalChars(illegalName);
+        Mockito.verify(spyLog).warn("The entity name " + illegalName + " contains a character (.) which could result in issues in HQL or webservices. Use characters from a to z, A to Z or 0 to 9 or the _");
+        entity.removeIllegalChars(illegalName2);
+        Mockito.verify(spyLog).warn("The entity name " + illegalName2 + " contains a character ($) which could result in issues in HQL or webservices. Use characters from a to z, A to Z or 0 to 9 or the _");
+        entity.removeIllegalChars(illegalName3);
+        Mockito.verify(spyLog).warn("The entity name " + illegalName3 + " contains a character (^) which could result in issues in HQL or webservices. Use characters from a to z, A to Z or 0 to 9 or the _");
+//        Assert.assertEquals("Mireia", entity.removeIllegalChars(illegalName));
+//        Assert.assertEquals("Isaac", entity.removeIllegalChars(illegalName2));
+//        Assert.assertEquals("Manu", entity.removeIllegalChars(illegalName3));
     }
 
 }
