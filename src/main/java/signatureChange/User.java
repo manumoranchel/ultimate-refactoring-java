@@ -17,4 +17,7 @@ public class User {
         return USER_ID == this.id;
     }
 
+    public boolean isValidUser() {
+        return isUser() || isAdmin();
+    }
 }
