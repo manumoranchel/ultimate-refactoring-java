@@ -15,14 +15,16 @@ public class CsvBuilderShould {
 
     @Test
     public void builds_csv_lines() throws Exception {
-        List<String> lines = builder.aFileWithLine(builder.buildLine("a", "b"));
+//        List<String> lines = builder.aFileWithLine(builder.buildLine("a", "b"));
+        List<String> lines = builder.aFileWithLine("a", "b");
+
         assertThat(lines.get(0)).isEqualToIgnoringCase("Field1, Field2");
         assertThat(lines.get(1)).isEqualToIgnoringCase("a,b");
     }
 
     @Test
     public void builds_csv_lines_with_more_fields_than_headers() throws Exception {
-        List<String> lines = builder.aFileWithLine(builder.buildLine("a", "b", "c"));
+        List<String> lines = builder.aFileWithLine("a", "b", "c");
         assertThat(lines.get(1)).isEqualToIgnoringCase("a,b,c");
     }
 }

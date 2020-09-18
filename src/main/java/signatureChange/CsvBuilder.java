@@ -13,7 +13,7 @@ public class CsvBuilder {
         return "Field1, Field2";
     }
 
-    public List<String> aFileWithLine(String line){
-        return Arrays.asList(header(), line);
+    public List<String> aFileWithLine(String... line){
+        return Arrays.asList(header(), buildLine(line));
     }
 }
