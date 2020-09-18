@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CsvBuilder {
-    public String buildLine(String... fields){
+    private String buildLine(String... fields){
         return Arrays.asList(fields).stream().collect(Collectors.joining(","));
     }
 
