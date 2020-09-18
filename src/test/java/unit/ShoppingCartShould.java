@@ -9,6 +9,7 @@ public class ShoppingCartShould {
     public void count_number_of_products() throws Exception {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.add(10);
+        shoppingCart.add(Integer.valueOf(10));
 
         Assert.assertEquals(1, shoppingCart.numberOfProducts());
     }
@@ -17,6 +18,7 @@ public class ShoppingCartShould {
     public void calculate_total_price() throws Exception {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.add(10);
+        shoppingCart.add(Integer.valueOf(10));
 
         Assert.assertEquals(10, shoppingCart.calculateTotalPrice());
     }
@@ -25,6 +27,7 @@ public class ShoppingCartShould {
     public void know_when_is_discount_applicable() throws Exception {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.add(100);
+        shoppingCart.add(Integer.valueOf(10));
 
         Assert.assertTrue(shoppingCart.hasDiscount());
     }
@@ -33,6 +36,7 @@ public class ShoppingCartShould {
     public void know_when_is_not_possible_to_apply_discount() throws Exception {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.add(99);
+        shoppingCart.add(Integer.valueOf(10));
 
         Assert.assertFalse(shoppingCart.hasDiscount());
     }
