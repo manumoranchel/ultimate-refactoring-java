@@ -11,7 +11,7 @@ public class ShoppingCart {
         this.prices.add(price);
     }
 
-    public Integer calculateTotalPrice(){
+    public int calculateTotalPrice(){
         return prices.stream().mapToInt(price -> price).sum();
     }
 

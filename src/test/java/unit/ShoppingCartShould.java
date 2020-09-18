@@ -18,7 +18,7 @@ public class ShoppingCartShould {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.add(10);
 
-        Assert.assertEquals(Integer.valueOf(10), shoppingCart.calculateTotalPrice());
+        Assert.assertEquals(10, shoppingCart.calculateTotalPrice());
     }
 
     @Test
