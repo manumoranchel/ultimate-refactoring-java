@@ -3,17 +3,17 @@ package signatureChange;
 
 public class AuthenticationService {
     public boolean isAuthenticated(int id) {
-        User user = new User(id);
+        Id user = new Id(id);
         return user.isValidUser();
     }
 
     public boolean isAdminAuthenticated(int id) {
-        User user = new User(id);
+        Id user = new Id(id);
         return user.isAdmin();
     }
 
     public boolean isUserAuthenticated(int id) {
-        User user = new User(id);
+        Id user = new Id(id);
         return user.isUser();
     }
 }
