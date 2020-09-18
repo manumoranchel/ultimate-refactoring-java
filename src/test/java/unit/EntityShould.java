@@ -57,9 +57,6 @@ public class EntityShould {
         Mockito.verify(spyLog).warn("The entity name " + illegalName2 + " contains a character ($) which could result in issues in HQL or webservices. Use characters from a to z, A to Z or 0 to 9 or the _");
         entity.removeIllegalChars(illegalName3);
         Mockito.verify(spyLog).warn("The entity name " + illegalName3 + " contains a character (^) which could result in issues in HQL or webservices. Use characters from a to z, A to Z or 0 to 9 or the _");
-//        Assert.assertEquals("Mireia", entity.removeIllegalChars(illegalName));
-//        Assert.assertEquals("Isaac", entity.removeIllegalChars(illegalName2));
-//        Assert.assertEquals("Manu", entity.removeIllegalChars(illegalName3));
     }
 
 }

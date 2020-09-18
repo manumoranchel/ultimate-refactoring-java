@@ -25,11 +25,11 @@ public class Entity {
         boolean nameChanged = false;
         for (char c : chars) {
             boolean hasIllegalChar = hasIllegalChar(c);
-            if (hasIllegalChar) {
+            if (!hasIllegalChar) {
+                newName.append(c);
+            } else {
                 nameChanged = true;
-                continue;
             }
-            newName.append(c);
         }
         if (nameChanged) {
             log.warn("The entity name " + fromName
