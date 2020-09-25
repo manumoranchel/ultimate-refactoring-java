@@ -1,2 +1,9 @@
 /target/
+<<<<<<< HEAD
 /pom.xml
+=======
+/.idea/
+/.settings/
+/.project
+/refactoring.iml
+>>>>>>> upstream/master
