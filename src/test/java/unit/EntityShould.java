@@ -48,7 +48,7 @@ public class EntityShould {
         String illegalName3 = "Manu^5";
 
         Entity entity = new Entity();
-        Log spyLog = Mockito.spy(new Log());
+        Log spyLog = Mockito.mock(Log.class);
         entity.log = spyLog;
 
         entity.removeIllegalChars(illegalName);

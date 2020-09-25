@@ -19,28 +19,24 @@ public class Entity {
         this.name = removeIllegalChars(name);
     }
 
-    public String removeIllegalChars(String fromName) {
-        final char[] chars = fromName.toCharArray();
+    public String removeIllegalChars(String name) {
+        final char[] chars = name.toCharArray();
         final StringBuilder newName = new StringBuilder();
-        boolean nameChanged = false;
         for (char c : chars) {
-            boolean hasIllegalChar = hasIllegalChar(c);
-            if (!hasIllegalChar) {
+            if (!hasIllegalChar(c)) {
                 newName.append(c);
-            } else {
-                nameChanged = true;
             }
         }
-        if (nameChanged) {
-            log.warn("The entity name " + fromName
+        if (!name.equals(newName.toString())) {
+            log.warn("The entity name " + name
                     + " contains illegal characters, it has been repaired to " + newName);
         } else {
             // check for other less normal characters
-            for (char c : fromName.trim().toCharArray()) {
+            for (char c : name.trim().toCharArray()) {
                 final boolean normalChar = ('A' <= c && c <= 'Z') || ('0' <= c && c <= '9')
                         || ('a' <= c && c <= 'z') || c == '_';
                 if (!normalChar) {
-                    log.warn("The entity name " + fromName + " contains a character (" + c
+                    log.warn("The entity name " + name + " contains a character (" + c
                             + ") which could result in issues in HQL or "
                             + "webservices. Use characters from a to z, A to Z or 0 to 9 or the _");
                 }
